@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+html {
+    font-size: 16px;
+}
+#canvasContainer {
+    display: flex;
+}
+
+canvas {
+    border: 1px solid #ccc;
+    margin: 50px 0 50px 250px;
+}
+
+p1 {
+    font-size: 40px;
+    margin: 30px 0 0 80px;
+    user-select: none
+}
+span {
+    color :#aa0000;
+    font-size: 80px;
+    margin: 30px 0 0 0px;
+    user-select: none
+}
+p2{
+    font-size: 40px;
+    margin: 140px 0 0 0px;
+    user-select: none
+}
+h1 {
+    margin: 0 0 0 0;
+    text-align: center; 
+    user-select: none
+}
+button img {
+    width: 80px;
+    height: auto;
+    mix-blend-mode: multiply;
+  }
+button {
+    border: none;
+    width: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    user-select: none /* 選択を禁止する */
+}
