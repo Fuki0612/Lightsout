@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lights Out</title>
-  <link href="../Lightsout_ico.ico" rel="shortcut icon">
-  <link href="style_title.css" rel="stylesheet">
-  <script>
-    window.onload = function () {
-      // ページが読み込まれたときに実行されるコード
-      var titleElement = document.querySelector('.title');
-      titleElement.contentEditable = false;
-    };
-    function butotnClick() {
-      window.location.href = 're_lightsout.html';
-    }
-  </script>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lights Out</title>
+<link href="Lightsout_ico.ico" rel="shortcut icon">
+<link href="style_title.css" rel="stylesheet">
+
 <body>
   <main>
-    <!-- Lights Out テキストを編集不可にする -->
-    <p class="title" contenteditable="false">Lights Out</p>
+    <p class="title"><img src="TITILE.png"></p>
     <button onclick="butotnClick()"><img src="start_button.png"></button>
   </main>
 </body>
+<script>
+  window.onload = function () {
+    // ページが読み込まれたときに実行されるコード
+    var titleElement = document.querySelector('.title');
+    titleElement.contentEditable = false;
+  };
+  function butotnClick() {
+    window.location.href = 're_lightsout.html';
+  }
+</script>
+
 
 </html>

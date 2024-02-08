@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lights Out</title>
+    <link href="../Lightsout_ico.ico" rel="shortcut icon">
     <link href="style.css" rel="stylesheet">
-    <title>Canvasと文字を並べる例</title>
 </head>
 
 <body>
@@ -68,6 +69,14 @@
             ctx.shadowBlur = 10;
             light.update();
             window.requestAnimationFrame(loop);
+        }
+
+        function clear (){
+            window.location.href = 'lightsout_clear.html?variable=' + encodeURIComponent(rest);
+        }
+
+        function game_over() {
+            window.location.href = 'lightsout_fail.html?variable=' + encodeURIComponent(rest);
         }
 
         const canvas = document.getElementById('myCanvas');
@@ -139,6 +148,12 @@
                 light.data[7].color *= -1;
                 light.data[8].color *= -1;
             }
+            let total = 0;
+            for (let j = 0; j < 9; j++) {
+                total += light.data[j].color;
+            }
+            if (total === 9) clear();
+            if (rest === 0) game_over();
             document.getElementById('rest_count').textContent = rest;
         }
 
