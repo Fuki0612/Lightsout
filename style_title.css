@@ -1,0 +1,34 @@
+body {
+    background-color: #f0f0f0; /* 背景色を指定 (例: グレー) */
+    margin: 0; /* 余白をゼロに設定 */
+    padding: 0; /* パディングをゼロに設定 */
+}
+main .title{
+    font-size: 100px;/* フォントサイズ */
+    font-weight: bold;/* フォント太さ */
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin: 5% 20% 5%;
+    background-color: #399837;/* 背景色 */
+    border-radius:15px;/* 角丸 */
+    color: #ffffff;/* フォント色 */
+    user-select: none /* 選択を禁止する */
+}
+
+p {
+    text-align: center;
+}
+
+button img {
+    width: 300px;
+    height: auto;
+    mix-blend-mode: multiply;
+  }
+button {
+    border: none;
+    margin: 0 25% 0;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0); /* 背景色を透明にする */
+    cursor: pointer;
+    user-select: none /* 選択を禁止する */
+}
