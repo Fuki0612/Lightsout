@@ -1,17 +1,48 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Clear</title>
-    <link href="Lightsout_ico.ico" rel="shortcut icon">
-    <link href="reset.css" rel="stylesheet">
-    <link href="style_clear.css" rel="stylesheet">
-  </head>
-  <body>
-    <main>
-      <p1 class="p1"><img src="clear_text.png"></p1> 
-    </main>
-  </body>
-</html>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Clear</title>
+  <link href="Lightsout_ico.ico" rel="shortcut icon">
+  <link href="reset.css" rel="stylesheet">
+  <link href="style_clear.css" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <div id="outerContainer">
+      <p1 class="p1"><img src="clear_text.png"></p1>
+      <button onclick="butotnClick()"><img src="return_to_title.png"></button>
+    </div>
+    <p1 class="p2">残り操作可能回数</p1>
+    <span id="rest_count"></span>
+    <p1 class="p3">回</p1>
+    <div id="innerContainer">
+      <p1 class="img1" id="p2Image"><img src="star_yellow.png"></p1>
+      <p1 class="img2" id="p3Image"><img src="star_yellow.png"></p1>
+      <p1 class="img3" id="p4Image"><img src="star_yellow.png"></p1>
+    </div>
+  </main>
+  <script>
+    var urlParams = new URLSearchParams(window.location.search);
+    var received = urlParams.get('variable');
+    document.getElementById('rest_count').textContent = received;
+
+    window.onload = function () {
+      // receivedの値によってp2のimgを変更
+      if (received <= 16) {
+        document.getElementById('p4Image').innerHTML = '<img src="star_black.png">';
+      }
+      if (received <= 9) {
+        document.getElementById('p3Image').innerHTML = '<img src="star_black.png">';
+      }
+    };
+    function butotnClick() {
+      window.location.href = 'lightsout_title.html';
+    }
+  </script>
+</body>
+
+</html>

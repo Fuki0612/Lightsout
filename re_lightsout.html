@@ -152,7 +152,7 @@
             for (let j = 0; j < 9; j++) {
                 total += light.data[j].color;
             }
-            if (total === 9) clear();
+            if (total === -9) clear();
             if (rest === 0) game_over();
             document.getElementById('rest_count').textContent = rest;
         }
