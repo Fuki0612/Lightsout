@@ -14,13 +14,13 @@ main {
 
 #outerContainer {
     display: flex;
-    margin:0 50px 100px 150px;
+    margin:0 50px 50px 150px;
     user-select: none; 
 }
 
 .p1 {
     display: block;
-    margin: 50px 250px 0 0;
+    margin: 90px 250px 0 0;
     user-select: none;
 }
 
@@ -32,18 +32,22 @@ main {
     font: "MS明朝";
     font-size: 32px;
     margin: 0 30px 0 0;
+    user-select: none;
 }
 
-span {
+#rest_count {
     color: #aa3030;
     font: "MS明朝";
     font-size: 48px;
+    pointer-events: none;
+    user-select: none;
 }
 
 .p3 {
     font: "MS明朝";
     font-size: 32px;
     margin: 0 0 0 30px;
+    user-select: none;
 }
 
 #innerContainer {
@@ -51,9 +55,7 @@ span {
     user-select: none;
 }
 
-.img1 img,
-.img2 img,
-.img3 img {
+.img img {
     margin: 0 30px 0;
     width: 200px;
     height: auto;
@@ -61,17 +63,17 @@ span {
     user-select: none
 }
 
-.img1 img {
+#p2Image img {
     animation: popup 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: 0.2s;
 }
 
-.img2 img {
+#p3Image img {
     animation: popup 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: 0.4s;
 }
 
-.img3 img {
+#p4Image img {
     animation: popup 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: 0.6s;
 }

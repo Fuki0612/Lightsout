@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: beige;
+}
+
+main {
+    text-align: center;
+}
+
+#outerContainer {
+    display: flex;
+    margin:0 50px 50px 150px;
+    user-select: none; 
+}
+
+.p1 {
+    display: block;
+    margin: 90px 250px 0 0;
+    user-select: none;
+}
+
+.p1 img {
+    margin: auto;
+}
+
+.button img {
+    width: auto;
+    height: 150px;
+}
+button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0); /* 背景色を透明にする */
+    cursor: pointer;
+    user-select: none; /* 選択を禁止する */
+    margin-top: 70px;
+}

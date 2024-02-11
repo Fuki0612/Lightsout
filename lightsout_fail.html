@@ -1,81 +1,31 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>lightsout_clear</title>
-    <link href="../Lightsout_ico.ico" rel="shortcut icon">
-    <link href="reset.css" rel="stylesheet">
-    <link href="style_clear.css" rel="stylesheet">
-  </head>
-  <body>
-    <header >
-      <div class="container">
-      <h1>Stage 1</h1>
-      </div><!-- /.container -->
-    </header>
-    <main>
-      <div class="container">
-        <section>
-          <p1 class="p1">残り操作回数<br><span id="rest_count"></span><br></p1>
-          <p2 class="p2">回</p2> 
-        </section>
-      </div><!-- /.container -->
-      <div class="p3">FAIL...</div> 
-    </main>
-    <script>
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      
-      canvas.width = 530;
-      canvas.height = 530;
-      
-      canvas.setAttribute('style', 'display:block;margin:auto;background-color: #ddf');
-      
-      document.body.appendChild(canvas);
 
-      var urlParams = new URLSearchParams(window.location.search);
-      var received = urlParams.get('variable');
-      document.getElementById('rest_count').textContent = received;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Failure</title>
+  <link href="Lightsout_ico.ico" rel="shortcut icon">
+  <link href="reset.css" rel="stylesheet">
+  <link href="style_fail.css" rel="stylesheet">
+</head>
 
-      const light = {
-        width: 90,
-        height: 90,
-        data: [], 
-        update: function() {
-          this.data.forEach(brick => {
-            ctx.fillStyle = "000000";
-            ctx.fillRect(brick.x, brick.y, brick.width, brick.height);
-            ctx.fill();
-          })
-        }
-      }
+<body>
+  <main>
+    <div id="outerContainer">
+      <p1 class="p1"><img src="fail_text.png"></p1>
+      <button onclick="butotnClick()"><img src="return_to_title.png"></button>
+    </div>
+  </main>
+  <script>
+    var urlParams = new URLSearchParams(window.location.search);
+    var received = urlParams.get('variable');
+    document.getElementById('rest_count').textContent = received;
 
-      const init = () => {
+    function butotnClick() {
+      window.location.href = 'lightsout_title.html';
+    }
+  </script>
+</body>
 
-        for(let i=0; i<9; i++) {        
-          light.data.push({
-            x: (light.width+20) * ((i%3)+1),
-            y: (light.height+20) * (Math.floor(i/3)+1),
-            width: light.width,
-            height: light.height              })
-        }
-      }
-
-      // メイン処理
-      const loop = () => {
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        light.update();
-        let total = 0;
-        for(let j=0; j<9; j++) {
-          total += light.data[j].color;
-        }
-        window.requestAnimationFrame(loop);
-      }
-
-      init();
-      loop();
-    </script>
-  </body>
 </html>
-
