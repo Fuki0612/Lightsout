@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8">
@@ -13,7 +13,7 @@
 <body>
   <main>
     <div id="outerContainer">
-      <p1 class="p1"><img src="clear_text.png"></p1>
+      <p1 class="p1"><img src="SUCCESS.png"></p1>
       <button onclick="butotnClick()"><img src="return_to_title.png"></button>
     </div>
     <p1 class="p2">残り操作可能回数</p1>
@@ -28,9 +28,8 @@
   <script>
 
     window.onload = function () {
-      var passDataString = localStorage.getItem('passData');
+      var passDataString = sessionStorage.getItem('passData');
       var passData = JSON.parse(passDataString);
-      console.log(passDataString);
       document.getElementById('rest_count').textContent = passData.rest;
       // receivedの値によってp2のimgを変更
       if (passData.rest <= 25 - passData.flash_number - 6) {
@@ -41,6 +40,7 @@
       }
     };
     function butotnClick() {
+      //localStorage.clear();
       window.location.href = 'lightsout_title.html';
     }
   </script>

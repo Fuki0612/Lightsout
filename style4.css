@@ -11,17 +11,11 @@ body {
 #canvasContainer {
     display: flex;
     flex-wrap: wrap;
-    user-select: none;
-}
-
-#Container {
-    margin: 3vw 2vw 0 1vw;
-    user-select: none;
 }
 
 canvas {
     border: 1px solid #ccc;
-    margin: 5vw 4vw 0 8vw;
+    margin: 3vw 5vw 0 5vw;
     max-width: 100%;
     box-sizing: border-box;
 }
@@ -36,13 +30,12 @@ span {
     color: #aa0000;
     font-size: 6vw;
     margin: 2vw 0 0 13vw;
-    text-align: center;
     user-select: none;
 }
 
 p2 {
     font-size: 3vw;
-    margin: 12vw 10vw 0 2vw;
+    margin: 12vw 10vw 0 0;
     user-select: none;
 }
 

@@ -1,0 +1,53 @@
+body {
+    background-color: rgb(252, 182, 182);
+    margin: 0;
+    user-select: none;
+}
+
+#headerContainer {
+    display: flex;
+}
+
+header button {
+    text-align: left;
+    border: none;
+    width: 5vw;
+    margin: 0.5vw 0 0 0.5vw;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    user-select: none;
+}
+
+header p1 {
+    font-size: 4vw;
+    font-style: normal;
+    margin: 1vw 0 0 30vw;
+}
+
+main {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main div button {
+    margin: 0.9vw;
+    width: 6vw;
+    height: 6vw;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+main div button canvas {
+    border: 0.1vw solid #000;
+    width: 6vw;
+    height: 6vw;
+}
+
+header button img {
+    width: 5vw;
+    margin: 0.5vw 0 0 0.5vw;
+    height: auto;
+}

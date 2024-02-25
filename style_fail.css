@@ -14,28 +14,23 @@ main {
 
 #outerContainer {
     display: flex;
-    margin:0 50px 50px 150px;
     user-select: none; 
 }
 
-.p1 {
-    display: block;
-    margin: 90px 250px 0 0;
+main div .p1 img {
+    width: 35vw;
+    margin: 6vw 7vw 0 12vw;
     user-select: none;
 }
 
-.p1 img {
-    margin: auto;
+main div button img {
+    width: 35vw;
+    margin-top: 3.3vw;
 }
 
-.button img {
-    width: auto;
-    height: 150px;
-}
 button {
     border: none;
     background-color: rgba(0, 0, 0, 0); /* 背景色を透明にする */
     cursor: pointer;
     user-select: none; /* 選択を禁止する */
-    margin-top: 70px;
 }

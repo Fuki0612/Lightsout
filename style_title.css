@@ -1,50 +1,94 @@
 body {
-    background-color: rgb(252,182,182);
-    margin: 0; /* 余白をゼロに設定 */
-    padding: 0; /* パディングをゼロに設定 */
+  background-color: rgb(252, 182, 182);
+  margin: 0;
+  /* 余白をゼロに設定 */
+  padding: 0;
+  /* パディングをゼロに設定 */
 }
+
 p img {
-    width: 1000px;
-    height: auto;
-    animation: poyoyon 1s ease-in-out forwards;
+  width: 50%;
+  height: auto;
+  animation: poyoyon 1s ease-in-out forwards;
+}
+
+#container {
+  display: flex;
+}
+
+@keyframes poyoyon {
+  0% {
+    transform: scale(1.0, 1.0) translate(0, 0);
   }
-  
-  @keyframes poyoyon {
-    0%  {
-      transform: scale(1.0, 1.0) translate(0, 0);
-    }
-    15% {
-      transform: scale(0.98, 0.9) translate(0, 5px);
-    }
-    30% {
-      transform: scale(1.02, 1.0) translate(0, 8px);
-    }
-    50% {transform: scale(0.98, 1.05) translate(0, -8px);
-    }
-    70% {
-      transform: scale(1.0, 0.9) translate(0, 5px);
-    }
-    100% {
-      transform: scale(1.0, 1.0) translate(0, 0);
-    }
-    0%, 100% {
-      opacity: 1;
-    }
+
+  15% {
+    transform: scale(0.98, 0.9) translate(0, 5px);
   }
+
+  30% {
+    transform: scale(1.02, 1.0) translate(0, 8px);
+  }
+
+  50% {
+    transform: scale(0.98, 1.05) translate(0, -8px);
+  }
+
+  70% {
+    transform: scale(1.0, 0.9) translate(0, 5px);
+  }
+
+  100% {
+    transform: scale(1.0, 1.0) translate(0, 0);
+  }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+}
 
 p {
-    text-align: center;
+  text-align: center;
 }
 
-button img {
-    width: 300px;
-    height: auto;
-  }
-button {
-    border: none;
-    margin: 0 25% 0;
-    width: 300px;
-    background-color: rgba(0, 0, 0, 0); /* 背景色を透明にする */
-    cursor: pointer;
-    user-select: none /* 選択を禁止する */
+#three img {
+  width: 15vw;
+  height: auto;
+}
+
+#four img {
+  width: 15vw;
+  height: auto;
+}
+
+
+#select img {
+  width: 30vw;
+  height: auto;
+}
+
+#three {
+  border: none;
+  margin: 0 1vw 0 25vw;
+  width: 15vw;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none
+}
+
+#four {
+  border: none;
+  width: 15vw;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none
+}
+
+#select {
+  border: none;
+  margin: 0 0 0 1vw;
+  width: 30vw;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  user-select: none
 }
