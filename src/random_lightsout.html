@@ -50,8 +50,8 @@
 
         const init = () => {
             const canvas = document.getElementById('myCanvas');
-            canvas.width = window.innerWidth/3; // ウィンドウの幅から50px引いたサイズに設定
-            canvas.height = canvas.width; // キャンバスを正方形にする
+            canvas.width = window.innerWidth/3;
+            canvas.height = canvas.width; 
             let numbers = [];
             while (numbers.length < pass.flash_number) {
                 let randomNumber = Math.floor(Math.random() * 9);

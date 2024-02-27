@@ -1,9 +1,7 @@
 body {
   background-color: rgb(252, 182, 182);
   margin: 0;
-  /* 余白をゼロに設定 */
   padding: 0;
-  /* パディングをゼロに設定 */
 }
 
 p img {
