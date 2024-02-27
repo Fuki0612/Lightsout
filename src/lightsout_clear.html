@@ -31,10 +31,10 @@
       var passDataString = sessionStorage.getItem('passData');
       var passData = JSON.parse(passDataString);
       document.getElementById('rest_count').textContent = passData.rest;
-      if (passData.rest <= 25 - passData.flash_number - 6) {
+      if (passData.rest <= 25 - passData.flash_number - 3) {
         document.getElementById('p4Image').innerHTML = '<img src="../images/star_black.png">';
       }
-      if (passData.rest <= 25 - passData.flash_number - 12) {
+      if (passData.rest <= 25 - passData.flash_number - 10) {
         document.getElementById('p3Image').innerHTML = '<img src="../images/star_black.png">';
       }
     };
