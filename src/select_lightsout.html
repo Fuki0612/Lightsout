@@ -5,20 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lights Out</title>
-    <link href="../Lightsout_ico.ico" rel="shortcut icon">
-    <link href="style.css" rel="stylesheet">
+    <link href="../images/Lightsout_ico.ico" rel="shortcut icon">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body>
-
-    <button onclick="butotnClick()"><img src="back_button.png"></button>
-
-    <!-- キャンバスとテキストを表示するためのコンテナ -->
     <div id="canvasContainer">
-        <!-- テキスト要素 -->
-        <p1 class="p1">残り操作回数<br><span id="rest_count"></span></p1>
-        <p2 class="p2">回</p2>
-        <!-- Canvas要素 -->
+        <div id="Container">
+            <button onclick="butotnClick()"><img src="../images/back_button.png"></button>
+            <p1 class="p1">残り操作回数<br><span id="rest_count"></span><br></p1>
+            <p2 class="p2">回</p2>
+        </div>
         <canvas id="myCanvas"></canvas>
     </div>
 
@@ -163,8 +160,8 @@
             for (let j = 0; j < 9; j++) {
                 total += light.data[j].color;
             }
-            if (total === -9) clear();
             if (pass.rest === 0) game_over();
+            if (total === -9) clear();
             document.getElementById('rest_count').textContent = pass.rest;
         }
 

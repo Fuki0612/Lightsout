@@ -19,13 +19,13 @@ main {
 
 main div .p1 img {
     width: 35vw;
-    margin: 6vw 7vw 0 12vw;
+    margin: 3vw 7vw 0 12vw;
     user-select: none;
 }
 
 main div button img {
     width: 35vw;
-    margin-top: 3.3vw;
+    margin-top: 3vw;
 }
 
 .p2 {

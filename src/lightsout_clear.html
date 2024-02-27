@@ -5,24 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Success</title>
-  <link href="Lightsout_ico.ico" rel="shortcut icon">
-  <link href="reset.css" rel="stylesheet">
-  <link href="style_clear.css" rel="stylesheet">
+  <link href="../images/Lightsout_ico.ico" rel="shortcut icon">
+  <link href="../css/reset.css" rel="stylesheet">
+  <link href="../css/style_clear.css" rel="stylesheet">
 </head>
 
 <body>
   <main>
     <div id="outerContainer">
-      <p1 class="p1"><img src="SUCCESS.png"></p1>
-      <button onclick="butotnClick()"><img src="return_to_title.png"></button>
+      <p1 class="p1"><img src="../images/SUCCESS.png"></p1>
+      <button onclick="butotnClick()"><img src="../images/return_to_title.png"></button>
     </div>
     <p1 class="p2">残り操作可能回数</p1>
     <p1 id="rest_count"></p1>
     <p1 class="p3">回</p1>
     <div id="innerContainer">
-      <p1 class="img" id="p2Image"><img src="star_yellow.png"></p1>
-      <p1 class="img" id="p3Image"><img src="star_yellow.png"></p1>
-      <p1 class="img" id="p4Image"><img src="star_yellow.png"></p1>
+      <p1 class="img" id="p2Image"><img src="../images/star_yellow.png"></p1>
+      <p1 class="img" id="p3Image"><img src="../images/star_yellow.png"></p1>
+      <p1 class="img" id="p4Image"><img src="../images/star_yellow.png"></p1>
     </div>
   </main>
   <script>
@@ -33,10 +33,10 @@
       document.getElementById('rest_count').textContent = passData.rest;
       // receivedの値によってp2のimgを変更
       if (passData.rest <= 25 - passData.flash_number - 6) {
-        document.getElementById('p4Image').innerHTML = '<img src="star_black.png">';
+        document.getElementById('p4Image').innerHTML = '<img src="../images/star_black.png">';
       }
       if (passData.rest <= 25 - passData.flash_number - 12) {
-        document.getElementById('p3Image').innerHTML = '<img src="star_black.png">';
+        document.getElementById('p3Image').innerHTML = '<img src="../images/star_black.png">';
       }
     };
     function butotnClick() {
