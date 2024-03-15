@@ -2,378 +2,314 @@
 <html lang="ja">
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stage Select</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lights Out</title>
 <link href="../images/Lightsout_ico.ico" rel="shortcut icon">
 <link href="../css/style_select.css" rel="stylesheet">
 
 <body>
-    <header>
-        <div id="headerContainer">
-            <button onclick="butotnClick()"><img src="../images/back_button.png"></button>
-            <p1>Stage SELECT</p1>
+    <div id="container">
+        <div id="left_box">
+            <button id="back_btn" onclick="title_button()"><img src="../images/back_button.png"></button>
+            <button id="left_btn" onclick="back()"></button>
         </div>
-    </header>
-    <main>
-        <div id="canvasContainer0">
-            <button onclick="SelectbuttonClick(1)"><canvas id="canvas00" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(2)"><canvas id="canvas01" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(3)"><canvas id="canvas02" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(4)"><canvas id="canvas03" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(5)"><canvas id="canvas04" width="100" height="100"></canvas></button>
+        <div id="center_box">
+            <div id="one_image">
+                <button class="canvas_btn" onclick="decision(1)"><canvas id="Canvas11"></canvas></button>
+                <button class="canvas_btn" onclick="decision(2)"><canvas id="Canvas12"></canvas></button>
+                <button class="canvas_btn" onclick="decision(3)"><canvas id="Canvas13"></canvas></button>
+                <button class="canvas_btn" onclick="decision(4)"><canvas id="Canvas14"></canvas></button>
+                <button class="canvas_btn" onclick="decision(5)"><canvas id="Canvas15"></canvas></button>
+            </div>
+            <div id="one_text">
+                <a>Stage<span id="1"></span></a>
+                <a>Stage<span id="2"></span></a>
+                <a>Stage<span id="3"></span></a>
+                <a>Stage<span id="4"></span></a>
+                <a>Stage<span id="5"></span></a>
+            </div>
+            <div id="two_image">
+                <button class="canvas_btn" onclick="decision(6)"><canvas id="Canvas21"></canvas></button>
+                <button class="canvas_btn" onclick="decision(7)"><canvas id="Canvas22"></canvas></button>
+                <button class="canvas_btn" onclick="decision(8)"><canvas id="Canvas23"></canvas></button>
+                <button class="canvas_btn" onclick="decision(9)"><canvas id="Canvas24"></canvas></button>
+                <button class="canvas_btn" onclick="decision(0)"><canvas id="Canvas25"></canvas></button>
+            </div>
+            <div id="two_text">
+                <a>Stage<span id="6"></span></a>
+                <a>Stage<span id="7"></span></a>
+                <a>Stage<span id="8"></span></a>
+                <a>Stage<span id="9"></span></a>
+                <a>Stage<span id="10"></span></a>
+            </div>
         </div>
-        <div id="canvasContainer1">
-            <button onclick="SelectbuttonClick(6)"><canvas id="canvas10" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(7)"><canvas id="canvas11" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(8)"><canvas id="canvas12" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(9)"><canvas id="canvas13" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(10)"><canvas id="canvas14" width="100" height="100"></canvas></button>
-        </div>
-        <div id="canvasContainer2">
-            <button onclick="SelectbuttonClick(11)"><canvas id="canvas20" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(12)"><canvas id="canvas21" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(13)"><canvas id="canvas22" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(14)"><canvas id="canvas23" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(15)"><canvas id="canvas24" width="100" height="100"></canvas></button>
-        </div>
-        <div id="canvasContainer3">
-            <button onclick="SelectbuttonClick(16)"><canvas id="canvas30" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(17)"><canvas id="canvas31" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(18)"><canvas id="canvas32" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(19)"><canvas id="canvas33" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(20)"><canvas id="canvas34" width="100" height="100"></canvas></button>
-        </div>
-        <div id="canvasContainer4">
-            <button onclick="SelectbuttonClick(21)"><canvas id="canvas40" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(22)"><canvas id="canvas41" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(23)"><canvas id="canvas42" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(24)"><canvas id="canvas43" width="100" height="100"></canvas></button>
-            <button onclick="SelectbuttonClick(25)"><canvas id="canvas44" width="100" height="100"></canvas></button>
-        </div>
-    </main>
+        <button id="right_btn" onclick="next()"></button>
+    </div>
 </body>
 <script>
-    function drawOnCanvas(canvasId, color, num) {
-        const canvas = document.getElementById(canvasId);
+    var screen = 1;
+    function canvas_get(id, array) {
+        const canvas = document.getElementById(id);
         const ctx = canvas.getContext('2d');
-
-        ctx.fillStyle = color;
+        canvas.width = window.innerHeight / 3;
+        canvas.height = canvas.width;
+        ctx.fillStyle = 'lightblue';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#eeeeee';
-        ctx.font = '50px Arial';
-        const textWidth = ctx.measureText(num).width;
-        ctx.fillText(num, (canvas.width - textWidth) / 2, canvas.height / 2 + 15);
+        if (screen === 1) {
+            for (let i = 0; i < 9; i++) {
+                if (array[i] === 1) {
+                    ctx.fillStyle = 'red';
+                } else {
+                    ctx.fillStyle = 'black';
+                }
+                ctx.fillRect(canvas.width / 100 * 4 * ((i % 3) + 1) + canvas.height / 100 * 28 * (i % 3), canvas.width / 100 * 4 * (Math.floor(i / 3) + 1) + canvas.height / 100 * 28 * (Math.floor(i / 3)), canvas.height / 100 * 28, canvas.height / 100 * 28)
+            }
+        }
+        else if (screen === 2) {
+            for (let i = 0; i < 16; i++) {
+                if (array[i] === 1) {
+                    ctx.fillStyle = 'red';
+                } else {
+                    ctx.fillStyle = 'black';
+                }
+                ctx.fillRect(canvas.width / 100 * 4 * ((i % 4) + 1) + canvas.height / 100 * 20 * (i % 4), canvas.width / 100 * 4 * (Math.floor(i / 4) + 1) + canvas.height / 100 * 20 * (Math.floor(i / 4)), canvas.height / 100 * 20, canvas.height / 100 * 20)
+            }
+        }
+        else if (screen === 3) {
+            for (let i = 0; i < 25; i++) {
+                if (array[i] === 1) {
+                    ctx.fillStyle = 'red';
+                } else {
+                    ctx.fillStyle = 'black';
+                }
+                ctx.fillRect(canvas.width / 100 * 13 / 6 * ((i % 5) + 1) + canvas.height / 100 * 17.5 * (i % 5), canvas.width / 100 * 13 / 6 * (Math.floor(i / 5) + 1) + canvas.height / 100 * 17.5 * (Math.floor(i / 5)), canvas.height / 100 * 17.5, canvas.height / 100 * 17.5)
+            }
+        }
     }
-    function butotnClick() {
+    const init = () => {
+        if (screen === 1) {
+            canvas_get('Canvas11', [1, -1, -1, -1, 1, -1, -1, -1, 1])
+            document.getElementById('1').textContent = 1
+            canvas_get('Canvas12', [1, 1, 1, 1, 1, 1, 1, -1, 1])
+            document.getElementById('2').textContent = 2
+            canvas_get('Canvas13', [1, 1, 1, 1, 1, 1, 1, 1, 1])
+            document.getElementById('3').textContent = 3
+            canvas_get('Canvas14', [1, -1, -1, 1, 1, 1, 1, 1, -1])
+            document.getElementById('4').textContent = 4
+            canvas_get('Canvas15', [1, -1, 1, 1, 1, 1, 1, -1, 1])
+            document.getElementById('5').textContent = 5
+            canvas_get('Canvas21', [-1, 1, -1, 1, 1, 1, 1, -1, 1])
+            document.getElementById('6').textContent = 6
+            canvas_get('Canvas22', [-1, 1, -1, 1, -1, 1, -1, 1, -1])
+            document.getElementById('7').textContent = 7
+            canvas_get('Canvas23', [-1, -1, 1, 1, -1, -1, 1, 1, 1])
+            document.getElementById('8').textContent = 8
+            canvas_get('Canvas24', [-1, 1, -1, -1, 1, -1, -1, 1, 1])
+            document.getElementById('9').textContent = 9
+            canvas_get('Canvas25', [1, 1, 1, 1, -1, 1, 1, 1, -1])
+            document.getElementById('10').textContent = 10
+        }
+        else if (screen === 2) {
+            canvas_get('Canvas11', [-1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, -1])
+            document.getElementById('1').textContent = 11
+            canvas_get('Canvas12', [1, 1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1, 1, 1])
+            document.getElementById('2').textContent = 12
+            canvas_get('Canvas13', [1, 1, 1, -1, 1, -1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1])
+            document.getElementById('3').textContent = 13
+            canvas_get('Canvas14', [-1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, 1, -1, -1, 1, -1])
+            document.getElementById('4').textContent = 14
+            canvas_get('Canvas15', [1, -1, 1, -1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1])
+            document.getElementById('5').textContent = 15
+            canvas_get('Canvas21', [1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, 1])
+            document.getElementById('6').textContent = 16
+            canvas_get('Canvas22', [-1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, -1])
+            document.getElementById('7').textContent = 17
+            canvas_get('Canvas23', [1, -1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1])
+            document.getElementById('8').textContent = 18
+            canvas_get('Canvas24', [-1, 1, 1, -1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1])
+            document.getElementById('9').textContent = 19
+            canvas_get('Canvas25', [-1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, 1, 1, -1])
+            document.getElementById('10').textContent = 20
+        }
+        else if (screen === 3) {
+            canvas_get('Canvas11', [-1, -1, -1, -1, -1, -1, -1, 1, -1, -1, 1, -1, -1, -1, 1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1])
+            document.getElementById('1').textContent = 21
+            canvas_get('Canvas12', [-1, 1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, -1, -1, 1, 1, -1])
+            document.getElementById('2').textContent = 22
+            canvas_get('Canvas13', [-1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1])
+            document.getElementById('3').textContent = 23
+            canvas_get('Canvas14', [1, 1, 1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, 1, -1, 1, -1])
+            document.getElementById('4').textContent = 24
+            canvas_get('Canvas15', [-1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, 1, -1])
+            document.getElementById('5').textContent = 25
+            canvas_get('Canvas21', [-1, -1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1])
+            document.getElementById('6').textContent = 26
+            canvas_get('Canvas22', [-1, -1, -1, -1, -1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1])
+            document.getElementById('7').textContent = 27
+            canvas_get('Canvas23', [-1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, 1])
+            document.getElementById('8').textContent = 28
+            canvas_get('Canvas24', [-1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, -1, -1, -1, 1])
+            document.getElementById('9').textContent = 29
+            canvas_get('Canvas25', [-1, -1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, -1, -1])
+            document.getElementById('10').textContent = 30
+        }
+    }
+
+    function next() {
+        if (screen < 3) {
+            screen += 1;
+        } else if (screen === 3) {
+            screen = 1;
+        }
+        init()
+    }
+
+    function back() {
+        if (screen > 1) {
+            screen -= 1;
+        } else if (screen === 1) {
+            screen = 3;
+        }
+        init()
+    }
+
+    function title_button() {
+        console.log("aaa");
         window.location.href = '../index.html';
     }
-    function SelectbuttonClick(num) {
-        if (num === 1) {
-            var color = new Array(3, 1, -1, -1, -1, 1, -1, -1, -1, 1, 1)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 2) {
-            var color = new Array(3, 1, 1, 1, 1, 1, 1, 1, -1, 1, 2)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 3) {
-            var color = new Array(5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 4) {
-            var color = new Array(3, 1, -1, -1, 1, 1, 1, 1, 1, -1, 4)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 5) {
-            var color = new Array(3, 1, 1, 1, -1, 1, -1, 1, 1, 1, 5)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 6) {
-            var color = new Array(3, -1, 1, 1, 1, 1, -1, -1, 1, 1, 6)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 7) {
-            var color = new Array(4, -1, 1, -1, 1, -1, 1, -1, 1, -1, 7)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 8) {
-            var color = new Array(3, -1, 1, 1, -1, -1, 1, 1, -1, 1, 8)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 9) {
-            var color = new Array(4, -1, -1, -1, 1, 1, 1, -1, -1, 1, 9)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 10) {
-            var color = new Array(4, 1, -1, 1, -1, 1, -1, -1, 1, -1, 10)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 11) {
-            var color = new Array(3, -1, -1, -1, 1, 1, 1, -1, 1, -1, 11)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 12) {
-            var color = new Array(3, -1, 1, -1, -1, 1, -1, 1, 1, 1, 12)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 13) {
-            var color = new Array(3, 1, 1, 1, 1, -1, 1, 1, 1, -1, 13)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout.html';
-        }
-        else if (num === 14) {
-            var color = new Array(4, -1,1,1,-1, 1,1,1,1, 1,1,1,1, -1,1,1,-1, 14)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout4.html';
-        }
-        else if (num === 15) {
-            var color = new Array(10, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 15)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout4.html';
-        }
-        else if (num === 16) {
-            var color = new Array(4, 1,1,1,-1, 1,-1,1,1, 1,1,-1,1, -1,1,1,1, 16)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout4.html';
-        }
-        else if (num === 17) {
-            var color = new Array(4, -1,-1,1,-1, -1,-1,1,1, -1,-1,1,1, -1,-1,1,-1, 17)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout4.html';
-        }
-        else if (num === 18) {
-            var color = new Array(5, 1,-1,1,-1, 1,1,1,1, 1,1,1,-1, 1,1,1,1, 18)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout4.html';
-        }
-        else if (num === 19) {
-            var color = new Array(4, -1,1,1,-1, 1,-1,-1,1, 1,-1,-1,1, -1,1,1,-1, 19)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout4.html';
-        }
-        else if (num === 20) {
-            var color = new Array(4, -1,-1,1,1, 1,1,1,-1, 1,-1,1,1, 1,1,1,-1, 20)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout4.html';
-        }
-        else if (num === 21) {
-            var color = new Array(4, 1,-1,-1,-1, -1,-1,1,-1, -1,-1,1,-1, 1,-1,-1,-1, 21)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout4.html';
-        }
-        else if (num === 22) {
-            var color = new Array(4, -1,1,1,-1, 1,-1,-1,1, -1,-1,-1,-1, 1,-1,-1,1, 22)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout4.html';
-        }
-        else if (num === 23) {
-            var color = new Array(5, -1,1,-1,1, 1,1,-1,-1, 1,1,1,1, 1,1,1,-1, 23)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout4.html';
-        }
-        else if (num === 24) {
-            var color = new Array(6, 1,-1,-1,1, 1,1,1,1, 1,1,1,1, 1,-1,-1,1, 24)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout4.html';
-        }
-        else if (num === 25) {
-            var color = new Array(4, 1,1,-1,1, 1,1,-1,1, 1,1,1,-1, 1,1,1,1, 25)
-            sessionStorage.setItem('colorData', JSON.stringify(color));
-            window.location.href = 'select_lightsout4.html';
+
+    function decision(id) {
+        var color;
+        if (screen === 1) {
+            if (id === 1) {
+                color = new Array(3, 1, -1, -1, -1, 1, -1, -1, -1, 1, 1)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout.html';
+            } else if (id === 2) {
+                color = new Array(3, 1, 1, 1, 1, 1, -1, 1, 1, 1, 2)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout.html';
+            } else if (id === 3) {
+                color = new Array(5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout.html';
+            } else if (id === 4) {
+                color = new Array(3, 1, 1, 1, -1, 1, 1, -1, 1, -1, 4)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout.html';
+            } else if (id === 5) {
+                color = new Array(3, 1, 1, 1, -1, 1, -1, 1, 1, 1, 5)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout.html';
+            } else if (id === 6) {
+                color = new Array(3, -1, 1, 1, 1, 1, -1, -1, 1, 1, 6)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout.html';
+            } else if (id === 7) {
+                color = new Array(4, -1, 1, -1, 1, -1, 1, -1, 1, -1, 7)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout.html';
+            } else if (id === 8) {
+                color = new Array(3, -1, 1, 1, -1, -1, 1, 1, -1, 1, 8)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout.html';
+            } else if (id === 9) {
+                color = new Array(4, -1, -1, -1, 1, 1, 1, -1, -1, 1, 9)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout.html';
+            } else if (id === 0) {
+                color = new Array(3, 1, 1, 1, 1, -1, 1, 1, 1, -1, 10)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout.html';
+            }
+        } else if (screen === 2) {
+            if (id === 1) {
+                color = new Array(4, -1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, -1, 11)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout4.html';
+            } else if (id === 2) {
+                color = new Array(4, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, -1, 1, 12)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout4.html';
+            } else if (id === 3) {
+                color = new Array(4, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 13)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout4.html';
+            } else if (id === 4) {
+                color = new Array(4, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, -1, 1, 1, -1, 14)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout4.html';
+            } else if (id === 5) {
+                color = new Array(5, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 15)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout4.html';
+            } else if (id === 6) {
+                color = new Array(6, 1, 1, 1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1, 1, 1, 1, 16)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout4.html';
+            } else if (id === 7) {
+                color = new Array(4, -1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 17)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout4.html';
+            } else if (id === 8) {
+                color = new Array(4, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, -1, -1, -1, -1, 18)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout4.html';
+            } else if (id === 9) {
+                color = new Array(4, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 19)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout4.html';
+            } else if (id === 0) {
+                color = new Array(4, -1, 1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, 20)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout4.html';
+            }
+        } else if (screen === 3) {
+            if (id === 1) {
+                color = new Array(7, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, 21)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout5.html';
+            } else if (id === 2) {
+                color = new Array(7, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, -1, -1, 1, 1, -1, 22)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout5.html';
+            } else if (id === 3) {
+                color = new Array(5, -1, -1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, -1, 23)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout5.html';
+            } else if (id === 4) {
+                color = new Array(5, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, 1, -1, 1, -1, 24)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout5.html';
+            } else if (id === 5) {
+                color = new Array(9, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, 1, -1, 25)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout5.html';
+            } else if (id === 6) {
+                color = new Array(6, -1, 1, -1, -1, 1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, 26)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout5.html';
+            } else if (id === 7) {
+                color = new Array(6, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, 1, 27)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout5.html';
+            } else if (id === 8) {
+                color = new Array(5, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 28)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout5.html';
+            } else if (id === 9) {
+                color = new Array(6, -1, 1, 1, 1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, 29)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout5.html';
+            } else if (id === 0) {
+                color = new Array(9, -1, -1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, -1, -1, 30)
+                sessionStorage.setItem('colorData', JSON.stringify(color));
+                window.location.href = 'select_lightsout5.html';
+            }
         }
     }
 
-    var passDataString = sessionStorage.getItem(1);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas00', '#aa3030', 1);
-    }else{
-        drawOnCanvas('canvas00', '#303030', 1);
-    }
-    var passDataString = sessionStorage.getItem(2);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas01', '#aa3030', 2);
-    }else{
-        drawOnCanvas('canvas01', '#303030', 2);
-    }
-    var passDataString = sessionStorage.getItem(3);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas02', '#aa3030', 3);
-    }else{
-        drawOnCanvas('canvas02', '#303030', 3);
-    }
-    var passDataString = sessionStorage.getItem(4);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas03', '#aa3030', 4);
-    }else{
-        drawOnCanvas('canvas03', '#303030', 4);
-    }
-    var passDataString = sessionStorage.getItem(5);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas04', '#aa3030', 5);
-    }else{
-        drawOnCanvas('canvas04', '#303030', 5);
-    }
-
-    var passDataString = sessionStorage.getItem(6);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas10', '#aa3030', 6);
-    }else{
-        drawOnCanvas('canvas10', '#303030', 6);
-    }
-    var passDataString = sessionStorage.getItem(7);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas11', '#aa3030', 7);
-    }else{
-        drawOnCanvas('canvas11', '#303030', 7);
-    }
-    var passDataString = sessionStorage.getItem(8);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas12', '#aa3030', 8);
-    }else{
-        drawOnCanvas('canvas12', '#303030', 8);
-    }
-    var passDataString = sessionStorage.getItem(9);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas13', '#aa3030', 9);
-    }else{
-        drawOnCanvas('canvas13', '#303030', 9);
-    }
-    var passDataString = sessionStorage.getItem(10);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas14', '#aa3030', 10);
-    }else{
-        drawOnCanvas('canvas14', '#303030', 10);
-    }
-
-    var passDataString = sessionStorage.getItem(11);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas20', '#aa3030', 11);
-    }else{
-        drawOnCanvas('canvas20', '#303030', 11);
-    }
-    var passDataString = sessionStorage.getItem(12);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas21', '#aa3030', 12);
-    }else{
-        drawOnCanvas('canvas21', '#303030', 12);
-    }
-    var passDataString = sessionStorage.getItem(13);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas22', '#aa3030', 13);
-    }else{
-        drawOnCanvas('canvas22', '#303030', 13);
-    }
-    var passDataString = sessionStorage.getItem(14);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas23', '#aa3030', 14);
-    }else{
-        drawOnCanvas('canvas23', '#303030', 14);
-    }
-    var passDataString = sessionStorage.getItem(15);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas24', '#aa3030', 15);
-    }else{
-        drawOnCanvas('canvas24', '#303030', 15);
-    }
-
-    var passDataString = sessionStorage.getItem(16);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas30', '#aa3030', 16);
-    }else{
-        drawOnCanvas('canvas30', '#303030', 16);
-    }
-    var passDataString = sessionStorage.getItem(17);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas31', '#aa3030', 17);
-    }else{
-        drawOnCanvas('canvas31', '#303030', 17);
-    }
-    var passDataString = sessionStorage.getItem(18);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas32', '#aa3030', 18);
-    }else{
-        drawOnCanvas('canvas32', '#303030', 18);
-    }
-    var passDataString = sessionStorage.getItem(19);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas33', '#aa3030', 19);
-    }else{
-        drawOnCanvas('canvas33', '#303030', 19);
-    }
-    var passDataString = sessionStorage.getItem(20);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas34', '#aa3030', 20);
-    }else{
-        drawOnCanvas('canvas34', '#303030', 20);
-    }
-
-    var passDataString = sessionStorage.getItem(21);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas40', '#aa3030', 21);
-    }else{
-        drawOnCanvas('canvas40', '#303030', 21);
-    }
-    var passDataString = sessionStorage.getItem(22);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas41', '#aa3030', 22);
-    }else{
-        drawOnCanvas('canvas41', '#303030', 22);
-    }
-    var passDataString = sessionStorage.getItem(23);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas42', '#aa3030', 23);
-    }else{
-        drawOnCanvas('canvas42', '#303030', 23);
-    }
-    var passDataString = sessionStorage.getItem(24);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas43', '#aa3030', 24);
-    }else{
-        drawOnCanvas('canvas43', '#303030', 24);
-    }
-    var passDataString = sessionStorage.getItem(25);
-    var passData = JSON.parse(passDataString);
-    if (passData === 1){
-        drawOnCanvas('canvas44', '#aa3030', 25);
-    }else{
-        drawOnCanvas('canvas44', '#303030', 25);
-    }
+    init()
 </script>
 
 </html>
