@@ -7,8 +7,9 @@
     "start_url": "./index.html",
     "icons": [
       {
-        "src": "../images/Lightsout_ico.ico",
-        "sizes": "48x48"
+        "src": "../images/star_yellow.png",
+        "sizes": "192x192",
+        "type": "image/png"
       }
     ]
   }
