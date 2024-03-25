@@ -1,0 +1,18 @@
+{
+    "name": "LIGHTSOUT",
+    "short_name": "LIGHTSOUT",
+    "theme_color": "#2196f3",
+    "background_color": "#2196f3",
+    "display": "standalone",
+    "start_url": "./index.html",
+    "icons": [
+      {
+        "src": "./images/Lightsout_ico.ico",
+        "sizes": "48x48 72x72 96x96 128x128 192x192 256x256 512x512",
+        "type": "image/vnd.microsoft.icon",
+        "purpose": "any maskable"
+      }
+    ]
+  }
+  
+  
