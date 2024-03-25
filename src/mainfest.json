@@ -8,8 +8,7 @@
     "icons": [
       {
         "src": "../images/Lightsout_ico.ico",
-        "sizes": "48x48",
-        "type": "image/ico"
+        "sizes": "48x48"
       }
     ]
   }
