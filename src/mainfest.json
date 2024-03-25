@@ -1,0 +1,17 @@
+{
+    "name": "LIGHTS OUT",
+    "short_name": "LIGHTS OUT",
+    "theme_color": "#2196f3",
+    "background_color": "#2196f3",
+    "display": "standalone",
+    "start_url": "./index.html",
+    "icons": [
+      {
+        "src": "../images/Lightsout_ico.ico",
+        "sizes": "48x48",
+        "type": "image/ico"
+      }
+    ]
+  }
+  
+  
