@@ -6,7 +6,7 @@
 <title>Lights Out</title>
 <link href="./images/Lightsout_ico.ico" rel="shortcut icon">
 <link href="./css/style_title.css" rel="stylesheet">
-<link rel="manifest" href="./src/manifest.json">
+<link rel="manifest" href="./manifest.json">
 
 <body>
   <main>
@@ -38,7 +38,7 @@
   function select_buttonClick() {
     window.location.href = './src/stage_select.html';
   }
-  
+
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').then(registration => {
       console.log('ServiceWorker registration successful.');
