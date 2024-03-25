@@ -142,18 +142,18 @@ div {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100px;
-  height: 100px;
+  width: 20vw;
+  height: 10vw;
   content: '';
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
-  transform: translateX(-80%) translateY(-7.5px);
+  transform: translateX(-90%) translateY(-2vw);
   border-radius: 50%;
   background: #ff0a0a;
 }
 
 #select:hover:before {
-  width: 450px;
-  height: 450px;
-  transform: translateX(-1%) translateY(-185px);
+  width: 20vw;
+  height: 10vw;
+  transform: translateX(-10%) translateY(-2vw);
 }

@@ -10,14 +10,16 @@
 </head>
 
 <body>
-    <div id="canvasContainer">
-        <div id="Container">
-            <button onclick="butotnClick()"><img src="../images/back_button.png"></button>
-            <p1 class="p1">残り操作回数<br><span id="rest_count"></span><br></p1>
-            <p2 class="p2">回</p2>
+    <main>
+        <div id="canvasContainer">
+            <div id="Container">
+                <button onclick="butotnClick()"><img src="../images/back_button.png"></button>
+                <p1 class="p1">残り操作回数<br><span id="rest_count"></span><br></p1>
+                <p2 class="p2">回</p2>
+            </div>
+            <canvas id="myCanvas"></canvas>
         </div>
-        <canvas id="myCanvas"></canvas>
-    </div>
+    </main>
 
     <script>
         var passDataString = sessionStorage.getItem('colorData');
@@ -27,7 +29,6 @@
             [passData[4], passData[5], passData[6]],
             [passData[7], passData[8], passData[9]],
         ]
-        console.log(color);
         const light = {
             width: window.innerWidth / 3 / 100 * 28,
             height: window.innerWidth / 3 / 100 * 28,
@@ -52,6 +53,7 @@
         }
 
         const init = () => {
+            console.log(passData[10]);
             const canvas = document.getElementById('myCanvas');
             canvas.width = window.innerWidth / 3;
             canvas.height = canvas.width;

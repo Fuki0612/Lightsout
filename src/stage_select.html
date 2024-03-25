@@ -48,10 +48,16 @@
 </body>
 <script>
     var screen = 1;
+    const image = new Image();
+    image.onload = function () {
+        init();
+    }
+    image.src = '../images/star_yellow.png';
+
     function canvas_get(id, array) {
         const canvas = document.getElementById(id);
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerHeight / 3;
+        canvas.width = window.innerWidth / 100 * 15;
         canvas.height = canvas.width;
         ctx.fillStyle = 'lightblue';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -85,11 +91,17 @@
                 ctx.fillRect(canvas.width / 100 * 13 / 6 * ((i % 5) + 1) + canvas.height / 100 * 17.5 * (i % 5), canvas.width / 100 * 13 / 6 * (Math.floor(i / 5) + 1) + canvas.height / 100 * 17.5 * (Math.floor(i / 5)), canvas.height / 100 * 17.5, canvas.height / 100 * 17.5)
             }
         }
+        var passData = null;
+        passData = JSON.parse(sessionStorage.getItem(document.getElementById(id).textContent));
+        console.log(id);
+        if (passData === 1){
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        }
     }
     const init = () => {
         if (screen === 1) {
-            canvas_get('Canvas11', [1, -1, -1, -1, 1, -1, -1, -1, 1])
             document.getElementById('1').textContent = 1
+            canvas_get('Canvas11', [1, -1, -1, -1, 1, -1, -1, -1, 1])
             canvas_get('Canvas12', [1, 1, 1, 1, 1, 1, 1, -1, 1])
             document.getElementById('2').textContent = 2
             canvas_get('Canvas13', [1, 1, 1, 1, 1, 1, 1, 1, 1])
@@ -174,7 +186,6 @@
     }
 
     function title_button() {
-        console.log("aaa");
         window.location.href = '../index.html';
     }
 
@@ -182,7 +193,7 @@
         var color;
         if (screen === 1) {
             if (id === 1) {
-                color = new Array(3, 1, -1, -1, -1, 1, -1, -1, -1, 1, 1)
+                color = new Array(3, 1, -1, -1, -1, 1, -1, -1, -1, 1,'Canvas11')
                 sessionStorage.setItem('colorData', JSON.stringify(color));
                 window.location.href = 'select_lightsout.html';
             } else if (id === 2) {
