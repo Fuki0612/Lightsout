@@ -1,20 +1,23 @@
+<!DOCTYPE html>
 <html lang="ja">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lights Out</title>
-<link href="./images/Lightsout_ico.ico" rel="shortcut icon">
-<link href="./css/style_title.css" rel="stylesheet">
-<link rel="manifest" href="./manifest.json">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lights Out</title>
+  <link href="./images/Lightsout_ico.ico" rel="shortcut icon">
+  <link href="./css/style_title.css" rel="stylesheet">
+  <link rel="manifest" href="./manifest.json">
+</head>
 
 <body>
   <main>
     <p class="title"><img src="./images/TITLE.png"></p>
-    <div id = "container">
-      <button id = "three" onclick="start_buttonClick(3)">3×3</button>
-      <button id = "four" onclick="start_buttonClick(4)">4×4</button>
-      <button id = "five" onclick="start_buttonClick(5)">5×5</button>
-      <button id = "select" onclick="select_buttonClick()"><span>stage select</span></button>
+    <div id="container">
+      <button id="three" onclick="start_buttonClick(3)">3×3</button>
+      <button id="four" onclick="start_buttonClick(4)">4×4</button>
+      <button id="five" onclick="start_buttonClick(5)">5×5</button>
+      <button id="select" onclick="select_buttonClick()"><span>stage select</span></button>
     </div>
   </main>
 </body>
@@ -25,11 +28,11 @@
   }
 
   function start_buttonClick(num) {
-    if (num === 3){
+    if (num === 3) {
       window.location.href = './src/random_lightsout.html';
-    }else if (num === 4){
+    } else if (num === 4) {
       window.location.href = './src/random_lightsout4.html';
-    }else if (num === 5){
+    } else if (num === 5) {
       window.location.href = './src/random_lightsout5.html';
     }
   }
@@ -46,4 +49,5 @@
     });
   }
 </script>
+
 </html>
